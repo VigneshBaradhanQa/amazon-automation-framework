@@ -8,21 +8,26 @@ import com.aventstack.extentreports.*;
 public class TestListener implements ITestListener {
 
     ExtentReports extent = ExtentManager.getInstance();
-    ExtentTest test;
+    ThreadLocal<ExtentTest> test = new ThreadLocal<>();
 
     public void onTestStart(ITestResult result) {
-        test = extent.createTest(result.getName());
+        ExtentTest extentTest = extent.createTest(result.getName());
+        test.set(extentTest);
     }
 
     public void onTestSuccess(ITestResult result) {
-        test.pass("Test Passed");
+        test.get().pass("Test Passed");
     }
 
     public void onTestFailure(ITestResult result) {
-        test.fail(result.getThrowable());
+        test.get().fail(result.getThrowable());
 
         String path = ScreenshotUtil.capture(BaseTest.getDriver(), result.getName());
-        test.addScreenCaptureFromPath(path);
+        test.get().addScreenCaptureFromPath(path);
+    }
+
+    public void onTestSkipped(ITestResult result) {
+        test.get().skip(result.getThrowable());
     }
 
     public void onFinish(ITestContext context) {

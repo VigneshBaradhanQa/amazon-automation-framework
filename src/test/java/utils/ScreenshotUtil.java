@@ -1,19 +1,25 @@
 package utils;
 
-import org.openqa.selenium.*;
 import java.io.File;
-import org.apache.commons.io.FileUtils;
+import java.io.IOException;
+
+import org.openqa.selenium.*;
+import org.openqa.selenium.io.FileHandler;
 
 public class ScreenshotUtil {
 
     public static String capture(WebDriver driver, String testName) {
+
+        String path = System.getProperty("user.dir") + "/screenshots/" + testName + ".png";
+
         try {
             File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            String path = "reports/" + testName + ".png";
-            FileUtils.copyFile(src, new File(path));
-            return path;
-        } catch (Exception e) {
-            return null;
+            File dest = new File(path);
+            FileHandler.copy(src, dest);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        return path; 
     }
 }
