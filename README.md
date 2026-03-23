@@ -8,7 +8,7 @@ Selenium Test Automation Framework using Java, TestNG, and POM design pattern wi
 
 
 
-\## 📌 Tech Stack
+\## Tech Stack
 
 \- Java
 
@@ -20,7 +20,7 @@ Selenium Test Automation Framework using Java, TestNG, and POM design pattern wi
 
 
 
-\## 📌 Framework Design
+\## Framework Design
 
 \- Page Object Model (POM)
 
@@ -30,7 +30,7 @@ Selenium Test Automation Framework using Java, TestNG, and POM design pattern wi
 
 
 
-\## 📌 Features
+\## Features
 
 \- Login Test
 
@@ -42,7 +42,7 @@ Selenium Test Automation Framework using Java, TestNG, and POM design pattern wi
 
 
 
-\## 📌 Project Structure
+\## Project Structure
 
 src/main/java
 
@@ -60,7 +60,7 @@ src/test/java
 
 
 
-\## 📌 How to Run
+\## How to Run
 
 1\. Clone repo
 
@@ -68,7 +68,7 @@ src/test/java
 
 
 
-\## 📌 Reports
+\## Reports
 
 \- TestNG Reports → test-output/
 
